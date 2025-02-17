@@ -22,4 +22,4 @@ while len(people_for_dinner) > 2:
 for people in people_for_dinner:
     print (f'Hello {people} I would like to invite you to dinner')
 
-del people_for_dinner
+del people_for_dinner[:]
