@@ -1,0 +1,1 @@
+print('George Washington once said, \"To be prepared for war is one of the most effective means of preserving peace."')
