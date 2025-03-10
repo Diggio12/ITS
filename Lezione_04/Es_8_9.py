@@ -1,7 +1,8 @@
 messages:list = ['Come va?', 'Hai terminato?', 'Ciao!', 'Chi sei?']
 
-def show_messages():
-    for i in messages:
+def show_messages(list:list):
+    for i in list:
         print(i)
 
-show_messages()
+if __name__ == '__main__':
+    show_messages(messages)
