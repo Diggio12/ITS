@@ -1,0 +1,15 @@
+table, td {
+    border: 1px solid white;
+    text-align: left;
+}
+
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    padding: 15px;
+}

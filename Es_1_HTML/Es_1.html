@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1</title>
+</head>
+<body>
+    <h1 align="left">Benvenuti nel Nostro Sito!</h1>
+    <div align="left">
+        Cos’è Lorem Ipsum?
+        Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. 
+        <br>Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. 
+        <br>È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. 
+        <br>Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.
+        </div>
+        <h2>Crea un Nuovo Account</h2>
+        <form method="post" action="esegui.php">
+            <input type="text" name="Nome" placeholder="Nome">
+            <input type="text" name="Cognome" placeholder="Cognome"></br>
+            <input type="text" name="Indirizzo email" placeholder="Inserisci il tuo indirizzo email"></br>
+            <input type="text" name="Nuova password" placeholder="Nuova Password"></br>
+            Uomo<input type="radio" name="Uomo">
+            Donna<input type="radio" name="Donna"></br>
+            Come ci hai conosciuto?<select name="come ci hai conosciuto?">
+            <option value="Tramite amici">Conosciuto da amici</option>
+            <option value="Altro">Altro</option>
+            </select>
+            Parlaci di te! <br><textarea name="commento" rows="5" cols="30"></textarea>
+            <br><br>
+
+            <input type="checkbox" name="Condizioni d'uso" value="Uso">Accetto le <a href="condizioni.html">condizioni d'uso</a><br>
+
+            <input type="submit" name="Crea account" value="Crea account">
+            </form>
+</body>
+</html>
