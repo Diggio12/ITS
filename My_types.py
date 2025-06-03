@@ -100,3 +100,12 @@ class Cf(str):
         if not value.isalnum() or len(value) != 16:
             raise ValueError("Codice fiscale non valido")
         return str.__new__(cls, value)
+
+
+class RealGez(float):
+    def __new__(cls, v: int | float | str | bool | Self) -> Self:
+        n: float = super().__new__(cls, v)
+
+        if n>=0:
+            return n
+        raise ValueError(f'Il numero inserito {v} è negativo!')
