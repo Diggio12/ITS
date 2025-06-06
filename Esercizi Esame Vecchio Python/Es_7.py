@@ -63,7 +63,7 @@ class ContactManager:
 
     def search_contact_by_phone_number(self, phone_number:str) -> list:
         new_list:list = []
-        for key, value in self.contacts:
+        for key, value in self.contacts.items():
             if phone_number in value:
                 new_list.append(key)
                 return new_list
