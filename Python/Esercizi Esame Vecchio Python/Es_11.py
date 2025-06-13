@@ -16,7 +16,7 @@ def occorrenze(sentence: str) -> dict[str, int]:
             else:
                 occorrenze_dict[parola_pulita] += 1
 
-    print(occorrenze_dict)
+    return occorrenze_dict
 
 
 occorrenze('Ciao Python, come va Python?')
