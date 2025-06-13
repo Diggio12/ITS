@@ -21,5 +21,3 @@ is_valid_ipv4("255.255.255.255")
 is_valid_ipv4("256.100.10.1")
 is_valid_ipv4("192.168.1")
 is_valid_ipv4("192.168.1.a")
-
-        
