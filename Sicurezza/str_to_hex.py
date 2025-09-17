@@ -1,0 +1,21 @@
+M = 'Ciao'
+Mi=int(M.encode("utf-8").hex(), 16)
+print (Mi)
+
+m ='00b79503459bcef9fb28f7bdf5ab754d2eb9fd372a4a15f3eb20199ee73b'\
+    'd9744faf32301dc17adcb515183ca3'\
+    '1e7aa7122dfb8f2e9473ba83b07d75'\
+    '258ab64a8595bcddcfb3c0aa937578'\
+    'a09530387cb51b512a3e64e45e0f89'\
+    '95aa155f5238c628cac2ff6b836490'\
+    '9c6cb9796bd18bdc9e3f45ef61a04f'\
+    'e206f5bd11a1494650534419996140'\
+    'af5c20734d954d64c3d6fc0f271298'\
+    '2bbdf0197d40806eac86aa46728e28'\
+    'a73e2c9bcdaaeb37fb7628d28e7cf3'\
+    '05e5aeff771350f0a8a151f16ccb1d'\
+    '751cca7b1be295b82de91fda11a8ec'\
+    '4b587a5e3fa311a47311b3e598a891'\
+    '8d1c2357ba852823828876b64e6ac0'\
+    'c4fa3a570d66ca2a12542cc96b5f58'\
+    '0223'
