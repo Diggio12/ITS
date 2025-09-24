@@ -1,10 +1,13 @@
 class Persona:
-    def __init__(self, first_name: str, last_name: str):
+    __first_name:str
+    __last_name:str
+
+    def __init__(self, first_name: str, last_name: str,):
         
         if not isinstance(first_name, str) and not isinstance(last_name, str):
             self.setName(first_name)
             self.setLastName(last_name)
-            self.setAge = None
+            self.setAge(None)
 
         elif isinstance(first_name, str) and isinstance(last_name, str):
             self.setName(first_name)
@@ -12,12 +15,12 @@ class Persona:
             self.__age = 0
         
         elif isinstance(first_name, str) == False:
-            raise ValueError('Il nome inserito non è una stringa!')
             self.__first_name = None
+            raise ValueError('Il nome inserito non è una stringa!')
         
         elif isinstance(last_name, str) == False:
-            raise ValueError('Il cognome inserito non è una stringa!')
             self.__last_name = None
+            raise ValueError('Il cognome inserito non è una stringa!')
 
 
     def setName(self, first_name: str) -> None:
