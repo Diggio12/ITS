@@ -1,8 +1,9 @@
 from Crypto.Cipher import AES
 import base64
+from Crypto.Util.number import inverse
 
 
-# Function to pad the message to be multiple of 16 bytes
+'''# Function to pad the message to be multiple of 16 bytes
 # questa funzione prende il testo e lo rende multiplo di 16
 # perchè AES decifra 16 byte alla volta
 def pad(text):
@@ -52,12 +53,14 @@ def encrypt(plain_text, key):
 # prendi il cifratore/decifratore e fagli decifrare questo ()
 # ovviamente come argomento non c'è il testo da cifrare come prima,
 # ma c'è il testo da decifrare
+'''
 def decrypt(encrypted_text, key):
     cipher = AES.new(pad(key).encode("utf-8"), AES.MODE_ECB)
     decrypted_text = (
         cipher.decrypt(base64.b64decode(encrypted_text)).decode("utf-8").strip()
     )
     return decrypted_text
+'''
 
 
 # Example usage
@@ -104,4 +107,36 @@ for p1 in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
                 # e lo fa continuare fin quando non finisce tutte le combinazioni
                 except:
                     # continua
-                    continue
+                    continue'''
+
+
+
+n = 51151902024533551
+
+e = 3
+
+C = 10002041662569686
+
+def fattori_primi(n):
+    for i in range(2, int(n**0.5) + 1):                         # provo i possibili divisori solo da 2 fino alla radice quadrata di n (questo perchè se n = p * q, allora p/q <=> square di n)
+        if n % i == 0:                
+            p = i
+            q = n // i                                          # una volta trovato 1 fattore primo l'altro lo ricavo facendo n diviso (fattore primo trovato)
+            return p, q
+    return None                                                 # se non trova niente, n non è prodotto di due primi
+
+
+p, q = fattori_primi(n)
+print(f'p ={p}, q ={q}')
+
+phi = (p-1) * (q-1)
+
+d = inverse(e, phi)
+print(f'd ={d}')
+
+c_decriptato = pow(C, d, n)
+c_decriptato_str = c_decriptato.to_bytes((c_decriptato.bit_length() + 7) //8, 'big').decode()
+print(f'Il messaggio decriptato è: {c_decriptato_str}')
+
+
+
