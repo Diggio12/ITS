@@ -2,6 +2,7 @@ import React from 'react'
 import ToDoForm from './ToDoForm'
 import ToDoList from './ToDoList'
 import { useState, useEffect } from 'react'
+import { fetchTasks, addTaskService, deleteService } from './api'
 
 const API_URL = "http://localhost:3000/tasks"
 const ToDoApp = () => {
@@ -19,15 +20,11 @@ const ToDoApp = () => {
     };
 
     const addTask=async (text) =>{
-    await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body:JSON.stringify({text,completed:false})
-    });
+    await addTaskService(text);
     getTasks();
-  }
+  };
     const deleteTask = async (id) => {
-        await fetch(API_URL + "/" + id, { method: "DELETE" });
+        await deleteTask(id);
         getTasks();
     }
 
