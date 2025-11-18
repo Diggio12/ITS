@@ -1,0 +1,202 @@
+Raffinamento dei requisiti:
+
+	Le sedi possono essere provviste di piu sale distinte
+
+	
+
+	1 Sede:
+		- nome
+		-Indirizzo
+		-link con citta, regione e meganazione
+
+
+	2 Posto:
+		- numero di fila
+		- colonna appartenente
+
+	
+	3 Sale
+		+ posti disponibili
+		+ posti occupati
+		+ posti totali
+
+	4 Spettacolo:
+		- titolo
+		- date inizio e fine
+		- orari
+ 
+6 Tipologia:
+		- nome
+
+
+	7 Genere:
+		- nome
+ 	
+ 	
+ 	
+ 	11 Persona:
+ 		- nome
+		- cognome
+		- codice fiscale
+ 	5 Artisti:
+		sottoclasse di persona
+	8 Utente:
+		sottoclasse di persona
+
+	9 Biglietto:
+		- prezzo
+		- istante di acquisto
+
+	10 Biglietto ridotto:
+		- prezzo biglietto ridotto
+
+	11 Posti Occupati
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+Specifiche vincoli esterni:
+	
+	
+	
+
+
+
+
+Specifiche delle classi:
+
+	Classe Sala:
+		
+		+ operazione posti_totali():Intero >= 0:
+			precondizioni:
+				nessuna
+			postcondizione:
+				l'operazione non modifica il livello estensionale
+				il risultato "result" è cosi definito:
+					sia P l'insieme degli elementi p:Posto tale che esista (p, this):posto_sala
+					result è uguale alla cardinalità dell'insieme dei link (p, s)
+					
+					
+		+ operazione posti_disponibili(): Intero >= 0:
+			precondizioni:
+				nessuna
+			postcondizione:
+				l'operazione non modifica il livello estensionale
+				il risultato "result" è cosi definito:
+					sia P l'insieme degli elementi p:Posto dove p non è un'istanza di posto_occupato ed esista (p, this):posto_sala
+					result è uguale alla cardinalità dell'insieme dei link (p, s)
+					
+					
+					
+					
+					
+					
+		+ operazione disponibilità(): booleano:
+			precondizioni:
+				nessuna
+			postcondizione:
+				l'operazione non modifica il livello estensionale
+				il risultato 'result' è cosi definito:
+					sia this.posti_disponibili()>0 result è uguale a True
+					
+					sia this.posti_disponibili()=0 result è uguale a False
+					
+					
+					
+		[V.Sala.No_più_spettacoli_in_contemporaneo]Non possono esserci due spettacoli nella stessa sala allo stesso momento
+		
+			Per ogni elemento s: Sala siano spet1: Spettacolo e spet2: Spettacolo, non possono esistere (s, spet1): sala_spett e (s, spet2): sala_spett se:
+				- spet1.data = spet2.data
+				- spet1.ora_inizio = spet2.ora_inizio
+				- spet1.ora_fine = spet2.ora_fine	
+				- spet1.ora_inizio = spet2.ora_fine		
+					
+					
+	Classe Biglietto:
+		
+		[V.Biglietto.data_acquisto_dopo_spettacolo]Il biglietto non può essere acquistato dopo la data dello spettacolo
+		
+		Per ogni elemento b: Biglietto, esista un s: Spettacolo tale che (s, b):
+			big_spett, non può eistere b tale che:
+				a- b.istante_acquisto > s.data
+				b- b.istante_acquisto > s.ora_fine
+				
+				
+				
+	Classe Spettacolo:
+	
+		[V.Spettacolo.ora_inizio_maggiore_ora_fine]Uno spettacolo non può avere un'orario di inizio maggiore di orario di fine
+		
+		Per ogni elemento s: Spettacolo:
+		
+			non può esistere s tale che:
+			
+			a- s.ora_inizio > s.ora_fine
+			
+			
+			
+		[V.Sala.spettacolo_solo_una_sede]Uno spettacolo può essere svolto solo in una Sede
+		
+		
+		Per ogni elemento s:Spettacolo, sia sa: Sala tale che esiste (s, sa): sala_spett e esista se: Sede tale che (sa, se): sede_sala, non può esistere un link (s, sa) se sa è coinvolto in un link con una diversa istanza di Sede
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Specifiche Classe Use_Case:
+	
+		--Operazione Registrazione(nome: stringa, cognome: stringa, cf: cf): Persona
+		
+			precondizione:
+				sia P l'insieme degli oggetti p: Persona, non esista nessun p.cf = cf
+			postcondizione:
+				l'operazione modifica il livello estensionale dei dati
+				il risultato è cosi definito:
+					Si forma una nuova istanza p: Persona, con:
+					
+						p.nome = nome
+						p.cognome = cognome
+						p.cf = cf
+						
+						
+						
+						
+		--Operazione Prenotazione(spet: Spettacolo, u: Utente, fila: intero>= 0, colonnq: intero >= 0[1..*]): PostoOccupato[0..*]
+			
+			precondizioni:
+				sia s: Sala tale che esista (spet, s): sala_spett, sia s.disponibilità(adesso) == TRUE
+				
+			postcondizioni:
+				
+				l'operazione modifica il livello estensionale dei dati
+				il risultato è cosi definito:
+					Sia p: Posto tale che esista(p, s): posto_sala
+					si crea un link (u, b): utente_biglietto se p:
+						p.fila = fila
+						p.colonna = colonna
+						e p non sia istanza di PostoOccupato
+				
+				e si torna p come istanza della classe PostoOccupato
+			
+		
+		
+					
+					
+
+			
+	

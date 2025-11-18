@@ -1,0 +1,53 @@
+Raffinamento requisiti Risto Book
+
+cliente:
+	- nome: stringa
+	- indirizzo email: str
+	
+Ristorante:
+	- nome: stringa
+	- partita iva: stringa {id}
+	- indirizzo: str
+	[link-prenotazione]
+	
+Tipo Cucina:
+	- nome: str {id}
+	
+Prenotazione:
+	- giorno: DataOra
+	[link-cliente]
+	+is_confermata()
+	_Prenotazione_rifiutata (sottoclasse)
+	
+		
+	
+Promozione:
+	percentuale_sconto: Intero
+	data_inizio: DataOra
+	data_fine: DataOra
+	+ capienza_piena(numero: intero): booleano
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+Specifiche di Classi:
+
+	
+	Classe Prenotazione:
+		operazione is_confermata(): Booleano:
+			pre-condizione:
+				nessuna
+			post-condizione:
+				Il risultato è cosi definito:
+					
+					Se è confermata il risultato è uguale a TRUE
+					
+					Altrimenti è FALSE
+	
